@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:fragment="cabecera">
+	<!-- Title Page-->
+	<title>Proyecto</title>
+
+	<!-- Fontfaces CSS-->
+	<link href="/recursos/css/font-face.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+	<!-- Bootstrap CSS-->
+	<link href="/recursos/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+	<!-- Vendor CSS-->
+	<link href="/recursos/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"
+		media="all">
+	<link href="/recursos/vendor/wow/animate.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/slick/slick.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+	<link href="/recursos/vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
+
+	<!-- Main CSS-->
+	<link href="/recursos/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+	<div class="page-wrapper">
+
+		<span th:fragment="aside">
+			<!-- MENU SIDEBAR-->
+			<aside class="menu-sidebar2">
+				<div class="logo">
+					<h2>Inkafarma</h2>
+				</div>
+				<div class="menu-sidebar2__content js-scrollbar1">
+
+					<nav class="navbar-sidebar2">
+						<ul class="list-unstyled navbar__list">
+							<li class="active has-sub"><a class="js-arrow open" href="#">
+									<i class="fas fa-tachometer-alt"></i>Menu <span class="arrow">
+										<i class="fas fa-angle-down"></i>
+									</span>
+								</a>
+								<ul class="list-unstyled navbar__sub-list js-sub-list" style="display: block;">
+									<li><a href="/Categoria/"> <i class="fas fa-tachometer-alt"></i>Categoria
+										</a></li>
+									<li><a href="/Marca/"> <i class="fas fa-tachometer-alt"></i>Marca
+										</a></li>
+
+									<li><a href="/Producto/"> <i class="fas fa-tachometer-alt"></i>Producto
+										</a></li>
+
+									<li><a href="/Proveedor/"> <i class="fas fa-tachometer-alt"></i>Proveedor
+										</a></li>
+
+
+								</ul>
+							</li>
+
+							</a>
+
+						</ul>
+						</li>
+						</ul>
+					</nav>
+				</div>
+			</aside> <!-- END MENU SIDEBAR-->
+		</span>
+
+
+		<!-- PAGE CONTAINER-->
+		<div class="page-container2">
+			<!-- HEADER DESKTOP-->
+
+			<span th:fragment="header">
+				<header class="header-desktop2">
+
+					<div class="section__content section__content--p30">
+
+						<div class="container-fluid">
+							<div class="header-wrap2">
+								<div class="logo d-block d-lg-none">
+									<h2>Inkafarma</h2>
+
+								</div>
+
+								<div class="header-button2">
+
+
+									<div class="header-button-item mr-0 js-sidebar-btn">
+										<i class="zmdi zmdi-menu"></i>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+			</span> <span th:fragment="aside_2">
+				<aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
+					<div class="logo">
+
+						</a>
+					</div>
+					<div class="menu-sidebar2__content js-scrollbar2">
+
+
+
+						<nav class="navbar-sidebar2">
+							<ul class="list-unstyled navbar__list">
+								<li class="active has-sub"><a class="js-arrow" href="#">
+										<i class="fas fa-tachometer-alt"></i>Menu <span class="arrow"> <i
+												class="fas fa-angle-down"></i>
+										</span>
+									</a>
+									<ul class="list-unstyled navbar__sub-list js-sub-list">
+										<li><a href="/Categoria/"> <i class="fas fa-tachometer-alt"></i>Categoria
+											</a></li>
+										<li><a href="/Marca/"> <i class="fas fa-tachometer-alt"></i>Marca
+											</a></li>
+
+										<li><a href="/Producto/"> <i class="fas fa-tachometer-alt"></i>Producto
+											</a></li>
+										<li><a href="/Proveedor/"> <i class="fas fa-tachometer-alt"></i>Proveedor
+											</a></li>
+
+									</ul>
+								</li>
+
+						</nav>
+					</div>
+				</aside>
+			</span>
+			<!-- END HEADER DESKTOP-->
+
+			<!-- Inicio Seccion Cambiante-->
+			<section class="au-breadcrumb m-t-75">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="au-breadcrumb-content">
+									<div class="au-breadcrumb-left">
+										<span class="au-breadcrumb-span">You are here:</span>
+										<ul class="list-unstyled list-inline au-breadcrumb__list">
+											<li class="list-inline-item active"><a href="#">Home</a>
+											</li>
+											<li class="list-inline-item seprate"><span>/</span></li>
+											<li class="list-inline-item">Dashboard</li>
+										</ul>
+									</div>
+									<button class="au-btn au-btn-icon au-btn--green">
+										<i class="zmdi zmdi-plus"></i>add item
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<div th:fragment="footer">
+				<section>
+					<div class="section__content section__content--p30">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xl-8"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+		</div>
+
+	</div>
+	<div th:fragment="libreria">
+		<!-- Jquery JS-->
+		<script src="/recursos/vendor/jquery-3.2.1.min.js"></script>
+		<!-- Bootstrap JS-->
+		<script src="/recursos/vendor/bootstrap-4.1/popper.min.js"></script>
+		<script src="/recursos/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+		<!-- Vendor JS       -->
+		<script src="/recursos/vendor/slick/slick.min.js">
+
+		</script>
+		<script src="/recursos/vendor/wow/wow.min.js"></script>
+		<script src="/recursos/vendor/animsition/animsition.min.js"></script>
+		<script src="/recursos/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+
+		</script>
+		<script src="/recursos/vendor/counter-up/jquery.waypoints.min.js"></script>
+		<script src="/recursos/vendor/counter-up/jquery.counterup.min.js">
+
+		</script>
+		<script src="/recursos/vendor/circle-progress/circle-progress.min.js"></script>
+		<script src="/recursos/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+		<script src="/recursos/vendor/chartjs/Chart.bundle.min.js"></script>
+		<script src="/recursos/vendor/select2/select2.min.js">
+
+		</script>
+		<script src="/recursos/vendor/vector-map/jquery.vmap.js"></script>
+		<script src="/recursos/vendor/vector-map/jquery.vmap.min.js"></script>
+		<script src="/recursos/vendor/vector-map/jquery.vmap.sampledata.js"></script>
+		<script src="/recursos/vendor/vector-map/jquery.vmap.world.js"></script>
+		<!-- ALERTA -->
+		<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+		<!-- Main JS-->
+		<script src="/recursos/js/main.js"></script>
+		<!-- Formulario SIMPLE-->
+		<script src="/editarFormularios/unidad.js"></script>
+	</div>
+
+</body>
+
+</html>
+<!-- end document-->

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="plantillas/dashboard  :: cabecera"></head>
+
+<body class="animsition">
+	<div class="page-wrapper">
+		<span th:replace="plantillas/dashboard  :: aside"></span>
+		<div class="page-container2">
+			<span th:replace="plantillas/dashboard  ::  header"></span> <span
+				th:replace="plantillas/dashboard  ::  aside_2"></span>
+
+			<!-- Inicio Seccion Cambiante-->
+			<section class="au-breadcrumb m-t-75">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="au-breadcrumb-content"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<section class="statistic">
+
+				<div class="section__content section__content--p30">
+
+					<div class="container-fluid">
+						<h1 class="text-center text-danger" th:text=${titulo}></h1>
+						<div class="row">
+
+							<form th:object="${entidad}" method="post"
+								th:action="${RutaGrabar}">
+								<input type="hidden" th:field="*{idProveedor}"  />
+
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="exampleInputPassword1">Nombre</label> <input
+											type="text" class="form-control" th:field="*{empresa}"
+											required>
+									</div>
+
+									 <div class="form-group col-md-12">
+										<label for="exampleInputPassword1">ruc</label> <input
+											type="text" class="form-control" th:field="*{ruc}"
+											 required>
+									</div>
+									
+									<div class="form-group col-md-12">
+										<label for="exampleInputPassword1">telefono</label> <input
+											type="text" class="form-control" th:field="*{telefono}"
+											required>
+									</div>
+								</div>
+
+								<button type="submit" class="btn btn-dark">
+									<i class="fas fa-save"></i> Guardar
+								</button>
+
+								<a th:href=${RutaListado} class="btn btn-danger"> Regresar </a>
+
+
+
+							</form>
+
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- END STATISTIC-->
+
+
+		</div>
+	</div>
+
+
+	<div th:replace="plantillas/dashboard :: footer"></div>
+
+	<div th:replace="plantillas/dashboard :: libreria">
+		<!-- Formulario SIMPLE-->
+		<script src="/recursos/vendor/jquery-3.2.1.min.js"></script>
+		<script src="/editarFormularios/unidad.js"></script>
+
+
+
+	</div>
+
+
+
+
+</body>
+</html>
+
