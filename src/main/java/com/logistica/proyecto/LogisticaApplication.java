@@ -1,7 +1,7 @@
 package com.logistica.proyecto;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplicationnn;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class LogisticaApplication {
