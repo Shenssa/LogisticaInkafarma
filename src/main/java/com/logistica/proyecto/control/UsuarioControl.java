@@ -6,25 +6,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.logistica.proyecto.entidad.Proveedor;
+import com.logistica.proyecto.entidad.Usuario;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
-import com.logistica.proyecto.servicio.ProveedorServicioImp;
  
 
 @Controller
-@RequestMapping("/Proveedor")
-public class ProveedorControl {
-	String carpeta = "Proveedor";
+@RequestMapping("/Usuario")
+public class UsuarioControl {
+	String carpeta = "Usuario";
 	@Autowired
-	private InterfacesSimple<Proveedor> Service;
+	private InterfacesSimple<Usuario> Service;
 
-	@Autowired
-	private  ProveedorServicioImp servicioIMP;
-	
+	 
 	
 	@RequestMapping({"/"})
 	public String inicio(Model model) {
@@ -37,18 +33,12 @@ public class ProveedorControl {
 		return "/" + carpeta + "/listado";
 	}
 
-	
-	@RequestMapping({"/buscar/"})
-	public String inicioB(Model model,@RequestParam(name="texto") String texto) {
-	  model.addAttribute("lista1",texto);
-	  model.addAttribute("lista",servicioIMP.BuscarPorEmpresa(texto));
-	  return "/" + carpeta + "/buscar";
-	}
+	 
 	
 	@GetMapping("/crear/")
 	public String crear(Model model) {
 		// instanciar entidad Nuevo
-		Proveedor obj = new Proveedor();
+		Usuario obj = new Usuario();
 		model.addAttribute("titulo", "Registrar " + carpeta);// titulo
 		model.addAttribute("RutaListado", "/" + carpeta + "/"); // RutaListado
 		model.addAttribute("RutaGrabar", "/" + carpeta + "/grabar"); // RutaGrabar
@@ -58,7 +48,7 @@ public class ProveedorControl {
 
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable("id") Integer id, Model model) {
-		Proveedor obj = null;
+		Usuario obj = null;
 		if (Service.existe(id) == true) {
 			obj = Service.BuscarPorIdEntidad(id);
 			model.addAttribute("titulo", "Modificar " + carpeta);
@@ -74,7 +64,7 @@ public class ProveedorControl {
 	}
 
 	@RequestMapping("/grabar")
-	public String guardar(Model model, Proveedor obj) {
+	public String guardar(Model model, Usuario obj) {
 		Service.guardar(obj);
 		return "redirect:";
 	}

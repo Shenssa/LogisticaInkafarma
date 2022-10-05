@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.logistica.proyecto.entidad.Producto;
+import com.logistica.proyecto.entidad.Proveedor;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
 import com.logistica.proyecto.servicio.impl.IProducto;
 
@@ -46,9 +47,33 @@ public class ProductoServicioImp implements InterfacesSimple<Producto> {
 	}
 
 	 
+	 
+	 public List<Producto> BuscarPorPrecioMayor(Double  valor) {
+			 return  DAO.buscarPorPrecioMayor(valor);
+			 
+		}
+	 public int CantidadFiltroPrecioMayor(Double  valor) {
+		 return  DAO.contarPorFiltroMayor(valor);
+		 
+	}
+	 
+	 public List<Producto> BuscarPorPrecioMenor(Double  valor) {
+		 return  DAO.buscarPorPrecioMenor(valor);
+		 
+	}
+     public int CantidadFiltroPrecioMenor(Double  valor) {
+	 return  DAO.contarPorFiltroMenor(valor);
+	 
+}
+	 
+     
 
-	 
-	 
-	 
-
+	 public List<Producto> BuscarPorStockMinimo() {
+			 return  DAO.buscarPorStockMinimo();
+			 
+		}
+	 public int CantidadBuscarPorStockMinimo() {
+		 return  DAO.contarPorProductoMinimo();
+		 
+	}
 }

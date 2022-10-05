@@ -39,6 +39,21 @@
 			<!-- STATISTIC-->
 			<section class="statistic">
 
+						<form th:object="${entidad}" method="post" th:action="@{/Producto/buscar/}" >
+						 <label>Busquedad de productos  por precio costo </label>
+						 <div class="container">
+							 <select class="form-select"  id="tipo" name="tipo"  >
+							  <option value="1">  Precio Mayor o igual </option>
+							  <option value="2">Precio Menor o igual</option>
+							  <option value="3">Producto con stockMinimo </option>
+							</select>
+						  <input   type="number"  min=0 value=1  id="valor" name="valor">
+						   <button type="submit"  class="btn btn-success my-4 " >Buscar</button>
+						 </div>
+						 
+						 
+                        
+                         </form>
 				<div class="section__content section__content--p30">
 
 					<div class="container-fluid">
@@ -50,15 +65,17 @@
 									<th>Categoria</th>
 									<th>Producto</th>
 									<th>Precio</th>
-										<th>Evento</th>
+									<th>Stock</th>
+									<th>StockMinimo</th>
+									 <th>Evento</th>
 									</thead>
 								<tbody>
 									<tr th:each="item:${lista}">
 									<td th:text="${item.idCategoria.nombre}"></td>
                                         <td th:text="${item.nombre}"></td>
-									 	<td th:text="${item.precioCosto}"></td>
-
- 
+                                         <td th:text="${item.precioCosto}"></td>
+  										<td th:text="${item.stock}"></td>
+ 										<td th:text="${item.stockMinimo}"></td>
 										<td>
 										<button class="btn btn-success"
 											th:onclick="'actulizar(' + ${item.idProducto} + ')'"> 
@@ -149,6 +166,19 @@
 				        
 			 }
 		
+		
+		
+		
+const grado_academico = document.querySelector("#tipo");
+const input = document.querySelector("[name=valor]");
+
+tipo.addEventListener("change", () => {
+  if (tipo.value !== "3") {
+    input.style.display = 'initial';
+  } else {
+    input.style.display = 'none';
+  }
+});
 		</script>
 
 

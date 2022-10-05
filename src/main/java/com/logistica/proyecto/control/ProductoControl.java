@@ -7,11 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.logistica.proyecto.entidad.Categoria;
 import com.logistica.proyecto.entidad.Marca;
 import com.logistica.proyecto.entidad.Producto;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
+import com.logistica.proyecto.servicio.ProductoServicioImp;
+import com.logistica.proyecto.servicio.ProveedorServicioImp;
  
 
 @Controller
@@ -25,6 +28,42 @@ public class ProductoControl {
 	
 	@Autowired
 	private InterfacesSimple<Marca> ServiceMarca;
+	@Autowired
+	private ProductoServicioImp servicioIMP;
+	
+	@RequestMapping({"/buscar/"})
+	public String inicioB(Model model,@RequestParam(name="tipo") int tipo,@RequestParam(name="valor",required = false) Double valor) {
+	  
+	  
+	   
+	  switch(tipo) {
+	  case 1: //Menor o igual
+		  model.addAttribute("mensaje","Producto con precio >= ");
+		  model.addAttribute("lista1",valor);
+		  model.addAttribute("lista",servicioIMP.BuscarPorPrecioMayor(valor)); 
+		  model.addAttribute("cantidad",servicioIMP.CantidadFiltroPrecioMayor(valor));
+		  break;
+		  
+	  case 2: //Mayor igual
+		  model.addAttribute("mensaje","Producto con precio <= ");
+		  model.addAttribute("lista1",valor);
+		  model.addAttribute("lista",servicioIMP.BuscarPorPrecioMenor(valor)); 
+		  model.addAttribute("cantidad",servicioIMP.CantidadFiltroPrecioMenor(valor));
+		  break;
+		  
+	  case 3: 
+		  model.addAttribute("mensaje","Producto con stock  <= al stockMinimo ");
+		  model.addAttribute("lista1","");
+		  model.addAttribute("lista",servicioIMP.BuscarPorStockMinimo()); 
+		  model.addAttribute("cantidad",servicioIMP.CantidadBuscarPorStockMinimo());
+		  break;
+	  }
+	   
+	   
+	 
+	  return "/" + carpeta + "/buscar";
+	}
+	
 	
 	
 	@RequestMapping("/")

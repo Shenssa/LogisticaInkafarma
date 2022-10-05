@@ -20,6 +20,7 @@ import com.logistica.proyecto.entidad.Imagen;
 import com.logistica.proyecto.entidad.Producto;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
 import com.logistica.proyecto.servicio.ImagenServicioImp;
+ 
 
  
  
@@ -40,12 +41,12 @@ public class ImagenControl {
 	public String crear(Model model, @PathVariable(value = "idProducto") Integer idProducto ) {
 		 
             Producto producto=new Producto();
-            idProducto=producto.getIdProducto();
+            int valor=idProducto;
             Imagen obj=new Imagen(producto); 
-   model.addAttribute("titulo", carpeta);
-		 
+            model.addAttribute("titulo", carpeta);
+		    System.out.println("--->"+idProducto );
 			 
-			 model.addAttribute("listaVer",Service.obtenerLista()) ;
+			 model.addAttribute("listaVer",IMP.ListarImagenes(valor)) ;
 		 
 			 model.addAttribute("listaProducto", ServiceProducto.BuscarPorIdEntidad(idProducto));
 		  model.addAttribute("RutaListado", "/Producto/"); // Regresar

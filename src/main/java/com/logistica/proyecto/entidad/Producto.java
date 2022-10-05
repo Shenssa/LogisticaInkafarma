@@ -29,6 +29,7 @@ public class Producto {
 	Double precioCosto;
 	Double precioVenta;
 	int stock;
+	int stockMinimo;
 	String estado;
 	
 	
@@ -42,6 +43,8 @@ public class Producto {
 		super();
 		this.idProducto = idProducto;
 	}
+
+ 
 
  
 
@@ -126,6 +129,16 @@ public class Producto {
 	}
 
 
+	public int getStockMinimo() {
+		return stockMinimo;
+	}
+
+
+	public void setStockMinimo(int stockMinimo) {
+		this.stockMinimo = stockMinimo;
+	}
+
+
 	public String getEstado() {
 		return estado;
 	}
@@ -136,8 +149,11 @@ public class Producto {
 	}
 
 
+	 
+
+
 	public Producto(int idProducto, Categoria idCategoria, Marca idMarca, String nombre, String descripcion,
-			Double precioCosto, Double precioVenta, int stock, String estado) {
+			Double precioCosto, Double precioVenta, int stock, int stockMinimo, String estado) {
 		super();
 		this.idProducto = idProducto;
 		this.idCategoria = idCategoria;
@@ -147,6 +163,7 @@ public class Producto {
 		this.precioCosto = precioCosto;
 		this.precioVenta = precioVenta;
 		this.stock = stock;
+		this.stockMinimo = stockMinimo;
 		this.estado = estado;
 	}
 
@@ -158,7 +175,8 @@ public class Producto {
 		precioVenta=0.0;
 		stock=0;
 	}
-	
+
+ 
 
 	 
 	

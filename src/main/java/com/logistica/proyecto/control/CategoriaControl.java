@@ -32,13 +32,7 @@ public class CategoriaControl {
 		model.addAttribute("RutaEditar", "/" + carpeta + "/editar/"); // Editar
 		model.addAttribute("lista", Service.obtenerLista());
 		model.addAttribute("cantidadItems", servicioIMP.total());
-	  
-	  
-		 
-			 
-		 
- 
-		return "/" + carpeta + "/listado";
+	  return "/" + carpeta + "/listado";
 	}
 
 	@GetMapping("/crear/")

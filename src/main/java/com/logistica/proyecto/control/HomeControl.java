@@ -12,7 +12,7 @@ public class HomeControl {
 	public String inicio() {
 		 
 	   
-		return "/home/listado" ;
+		return "/home/login" ;
 	}
 	
 }

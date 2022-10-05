@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.logistica.proyecto.entidad.Imagen;
-import com.logistica.proyecto.entidad.Producto;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
 import com.logistica.proyecto.servicio.impl.IImagen;
 
@@ -33,26 +32,20 @@ public class ImagenServicioImp implements InterfacesSimple<Imagen> {
 
 	}
 
-	 
-
 	@Override
 	public Imagen BuscarPorIdEntidad(Integer id) {
-		 return DAO.findById((Integer) id).orElse(null);
-		 
+		return DAO.findById((Integer) id).orElse(null);
+
 	}
 
 	@Override
 	public boolean existe(Integer id) {
-	return DAO.existsById(id);
+		return DAO.existsById(id);
 	}
 
-	 
- 
-	public List<Imagen> BuscarPorIdEntidadLista(Producto id) {
-		 return (List<Imagen>) DAO.findByImagens(id);
-		 
+	public List<Imagen> ListarImagenes(int id) {
+		return (List<Imagen>) DAO.findByImagens(id);
+
 	}
-	 
-	 
 
 }

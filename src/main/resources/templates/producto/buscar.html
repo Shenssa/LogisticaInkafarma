@@ -1,0 +1,72 @@
+ 
+	 
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="plantillas/dashboard  :: cabecera"></head>
+
+<body class="animsition">
+	<div class="page-wrapper">
+		<span th:replace="plantillas/dashboard  :: aside"></span>
+		<div class="page-container2">
+			<span th:replace="plantillas/dashboard  ::  header"> </span> <span
+				th:replace="plantillas/dashboard  ::  aside_2">  </span>
+
+			<!-- STATISTIC-->
+			<section class="statistic"><br><br> 
+				<h1 class="text-center text-danger" > <p><span th:text=${mensaje}> </span> <span th:text=${lista1}> </span>  </h1>
+				 <p>
+				  
+				  <span>    Cantidad de  registros </span>  <span th:text=${cantidad}></span> </p> 
+				 </p>
+				<div class="section__content section__content--p30">
+
+					<div class="container-fluid">
+						<h1 class="text-center text-danger"></h1>
+
+						<div class="row">
+						 
+                         
+							<table class="table">
+
+								<thead class="thead-dark  ">
+									<th>Producto</th>
+									<th>Precio</th>
+									<th>Stock</th>
+									<th>StockMinimo</th>
+								 
+								</thead>
+								<tbody>
+								 <tr th:each="item:${lista}">
+								  <td th:text="${item.nombre}"></td>
+								  <td th:text="${item.precioCosto}"></td>
+								  <td th:text="${item.stock}"></td>
+								    <td th:text="${item.stockMinimo}"></td>
+                                   </tr>
+								</tbody>
+							</table>
+  
+						</div>
+					</div>
+				</div>
+			</section>
+		 	<!-- END STATISTIC-->
+
+
+		</div>
+	</div>
+
+
+
+
+
+	<div th:replace="plantillas/dashboard :: footer"></div>
+
+	<div th:replace="plantillas/dashboard :: libreria"></div>
+
+	 
+
+
+</body>
+
+</html>

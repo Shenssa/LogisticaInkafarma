@@ -10,9 +10,9 @@ import javax.persistence.Table;
 @Table
 @Entity
 public class Proveedor {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idProveedor")
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "idProveedor")
 Integer idProveedor ;
 String ruc;
 String Empresa;

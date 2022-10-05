@@ -6,22 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.logistica.proyecto.entidad.Proveedor;
+import com.logistica.proyecto.entidad.Usuario;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
-import com.logistica.proyecto.servicio.impl.IProveedor;
+import com.logistica.proyecto.servicio.impl.IUsuario;
 
 @Service
-public class ProveedorServicioImp implements InterfacesSimple<Proveedor> {
+public class UsuarioServicioImp implements InterfacesSimple<Usuario> {
 	@Autowired
-	private IProveedor DAO;
+	private IUsuario DAO;
 
 	@Override
-	public List<Proveedor> obtenerLista() {
-		return (List<Proveedor>) DAO.findAll();
+	public List<Usuario> obtenerLista() {
+		return (List<Usuario>) DAO.findAll();
 
 	}
 
 	@Override
-	public void guardar(Proveedor obj) {
+	public void guardar(Usuario obj) {
 		DAO.save(obj);
 
 	}
@@ -35,7 +36,7 @@ public class ProveedorServicioImp implements InterfacesSimple<Proveedor> {
 	 
 
 	@Override
-	public Proveedor BuscarPorIdEntidad(Integer id) {
+	public Usuario BuscarPorIdEntidad(Integer id) {
 		 return DAO.findById((Integer) id).orElse(null);
 		 
 	}
@@ -45,10 +46,6 @@ public class ProveedorServicioImp implements InterfacesSimple<Proveedor> {
 	return DAO.existsById(id);
 	}
 
-	 
- public List<Proveedor> BuscarPorEmpresa(String  empresa) {
-		 return  DAO.buscarEmpresa(empresa);
-		 
-	}
+ 
 
 }

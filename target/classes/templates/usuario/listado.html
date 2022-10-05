@@ -45,42 +45,31 @@
 
 						<div class="row">
 						
-						<form th:object="${entidad}" method="post" th:action="@{/Proveedor/buscar/}" >
-						
-	 
-  
- 
-    <label for="exampleInputEmail1" class="form-label">Busquedad de proveedor por nombre</label>
-    <input type="text" class="form-control" id="texto" name="texto"  >
-     <button type="submit"  class="btn btn-success my-4 " >Buscar</button>
- 
-						 
-						 
-                        
-                         </form>
+					 
                          
 							<table class="table">
 
 								<thead class="thead-dark  ">
-									<th>IdProveedor</th>
+									<th>IdUsuario</th>
 							    <th>Nombre</th>
-									 <th>RUC</th>
-									<th>Telefono</th>
-									<th>Evento</th>
+									 <th>Correo</th>
+									    <th>Evento</th>
+							        <th>Rol</th>
 								</thead>
 								<tbody>
 									<tr th:each="item:${lista}">
-										<td th:text="${item.IdProveedor}"></td>
-										<td th:text="${item.empresa}"></td>
-										<td th:text="${item.ruc}"></td>
-										<td th:text="${item.telefono}"></td>
+									<td th:text="${item.idUsuario}"></td>
+										<td th:text="${item.nombre}"></td>
+										<td th:text="${item.correo}"></td>
+										 
+									 
 										<td>
 											<button class="btn btn-success"
-												th:onclick="'actulizar(' + ${item.IdProveedor} + ')'">
+												th:onclick="'actulizar(' + ${item.idUsuario} + ')'">
 												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											</button>
 											<button class="btn btn-danger"
-												th:onclick="'eliminar(' + ${item.IdProveedor} + ')'">
+												th:onclick="'eliminar(' + ${item.idUsuario} + ')'">
 												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											</button>
 
