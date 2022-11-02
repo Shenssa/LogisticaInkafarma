@@ -152,6 +152,14 @@ public class Producto {
 	 
 
 
+	public Producto(int idProducto, String nombre, Double precioCosto) {
+		super();
+		this.idProducto = idProducto;
+		this.nombre = nombre;
+		this.precioCosto = precioCosto;
+	}
+
+
 	public Producto(int idProducto, Categoria idCategoria, Marca idMarca, String nombre, String descripcion,
 			Double precioCosto, Double precioVenta, int stock, int stockMinimo, String estado) {
 		super();

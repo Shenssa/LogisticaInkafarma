@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2022 a las 02:40:06
+-- Tiempo de generación: 02-11-2022 a las 00:58:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -32,13 +32,17 @@ CREATE TABLE `categoria` (
   `nombre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `categoria`
+-- Estructura de tabla para la tabla `detalle_compra`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'Pastilla'),
-(2, 'Suero');
+CREATE TABLE `detalle_compra` (
+  `id_compra` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `id_producto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -52,15 +56,6 @@ CREATE TABLE `imagen` (
   `id_producto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `imagen`
---
-
-INSERT INTO `imagen` (`id_imagen`, `ruta_foto`, `id_producto`) VALUES
-(1, '9f9176ff-04fa-4b17-9610-045284a891d1_descarga (1).jpg', 1),
-(2, 'f2f1adc9-0008-4f24-aca4-b66c521018bd_descarga (3).jpg', 1),
-(4, 'eefe035b-f4c4-4dc0-8e7b-f5c5a99c4894_descarga.png', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -71,14 +66,6 @@ CREATE TABLE `marca` (
   `id_marca` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `marca`
---
-
-INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
-(1, 'postday'),
-(2, 'Electron');
 
 -- --------------------------------------------------------
 
@@ -93,20 +80,11 @@ CREATE TABLE `producto` (
   `nombre` varchar(255) DEFAULT NULL,
   `precio_costo` double DEFAULT NULL,
   `precio_venta` double DEFAULT NULL,
+  `stock` int(11) NOT NULL,
+  `stock_minimo` int(11) NOT NULL,
   `id_categoria` int(11) DEFAULT NULL,
-  `id_marca` int(11) DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL,
-  `stock_minimo` int(11) NOT NULL
+  `id_marca` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`id_producto`, `descripcion`, `estado`, `nombre`, `precio_costo`, `precio_venta`, `id_categoria`, `id_marca`, `stock`, `stock_minimo`) VALUES
-(1, 'No tiene', 'ACTIVO', 'Cura todo', 15, 0, 1, 1, 0, 3),
-(2, 'A', 'ACTIVO', 'S', 123, 0, 2, 2, 0, 3),
-(3, '1231', 'ACTIVO', 'sdas', 333333333, 0, 1, 1, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -121,12 +99,23 @@ CREATE TABLE `proveedor` (
   `telefono` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `proveedor`
+-- Estructura de tabla para la tabla `rol`
 --
 
-INSERT INTO `proveedor` (`id_proveedor`, `empresa`, `ruc`, `telefono`) VALUES
-(3, 'A', '8888', '8888888888888');
+CREATE TABLE `rol` (
+  `id_rol` int(11) NOT NULL,
+  `nombre` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`id_rol`, `nombre`) VALUES
+(1, 'asddd');
 
 -- --------------------------------------------------------
 
@@ -136,19 +125,10 @@ INSERT INTO `proveedor` (`id_proveedor`, `empresa`, `ruc`, `telefono`) VALUES
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
-  `correo` varchar(255) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `correo` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `correo`, `nombre`, `password`) VALUES
-(2, 'xvladi12x@hotmail.com', 'Alberto', '6544'),
-(3, 'xvladi12x@hotmail.com', 'Alberto', '123'),
-(4, 'xvladi12x@hotmail.com', 'asd', 'clave');
 
 --
 -- Índices para tablas volcadas
@@ -159,6 +139,13 @@ INSERT INTO `usuario` (`id_usuario`, `correo`, `nombre`, `password`) VALUES
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
+
+--
+-- Indices de la tabla `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  ADD PRIMARY KEY (`id_compra`),
+  ADD KEY `FKde793s86syuil5f8myqoqrwro` (`id_producto`);
 
 --
 -- Indices de la tabla `imagen`
@@ -188,6 +175,12 @@ ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id_proveedor`);
 
 --
+-- Indices de la tabla `rol`
+--
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`id_rol`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -201,41 +194,59 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `rol`
+--
+ALTER TABLE `rol`
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  ADD CONSTRAINT `FKde793s86syuil5f8myqoqrwro` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
 
 --
 -- Filtros para la tabla `imagen`

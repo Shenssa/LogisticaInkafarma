@@ -9,29 +9,29 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-public class Marca {
+public class Rol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idMarca")
-	int idMarca;
+	@Column(name = "idRol")
+	int idRol;
 	String nombre;
 
-	public Marca() {
+	public Rol() {
 		super();
 	}
 
-	public Marca(int idMarca, String nombre) {
+	public Rol(int idRol, String nombre) {
 		super();
-		this.idMarca = idMarca;
+		this.idRol = idRol;
 		this.nombre = nombre;
 	}
 
-	public int getIdMarca() {
-		return idMarca;
+	public int getIdRol() {
+		return idRol;
 	}
 
-	public void setIdMarca(int idMarca) {
-		this.idMarca = idMarca;
+	public void setIdRol(int idRol) {
+		this.idRol = idRol;
 	}
 
 	public String getNombre() {

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="plantillas/dashboard  :: cabecera"></head>
+
+<body class="animsition">
+	<div class="page-wrapper">
+		<span th:replace="plantillas/dashboard  :: aside"></span>
+		<div class="page-container2">
+			<span th:replace="plantillas/dashboard  ::  header"></span> <span
+				th:replace="plantillas/dashboard  ::  aside_2"></span>
+
+			<!-- Inicio Seccion Cambiante-->
+			<section class="au-breadcrumb m-t-75">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="au-breadcrumb-content">
+
+									<a class="au-btn au-btn-icon au-btn--green " th:href=${RutaNuevo}> <i
+											class="zmdi zmdi-plus"></i>Nuevo
+									</a>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!--Fin Seccion Cambiante-->
+
+
+			<!-- STATISTIC-->
+			<section class="statistic">
+
+				<div class="section__content section__content--p30">
+
+					<div class="container-fluid">
+						<h1 class="text-center text-danger" th:text=${titulo}></h1>
+						<div class="row">
+							<form method="GET" th:action="@{agregar}" >
+							<div class="form-row">
+								
+									<label for="exampleInputPassword1"> Producto </label> 
+										  <select class="form-control" value="id">
+											<option th:each="item : ${listaProducto}"
+												th:value="${item.idProducto}" th:text="${item.nombre}"></option>
+									 </select>
+									</div>
+								 
+								 <div class="form-row">
+								
+									<label for="exampleInputPassword1"> Proveedor </label> 
+										  <select class="form-control" value="id">
+											<option  >Sin proveedor</option>
+									 </select>
+									 
+									 
+									</div>
+								 
+								<input type="submit" value="Agregar a carrito" class="btn btn-success">
+							</form>
+ 
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- END STATISTIC-->
+	<h2>Listado de Productos agregados al carrito</h2>
+	 
+	<th:block th:each="item,posicion:${carrito}">
+			<div>
+			<input="number" value="1" min="1" placeholder="Cantidad de producto">
+			</div>
+			<p> <span th:text="${item}">
+			 
+			</span>
+			 
+		 
+			</p>
+			
+			 
+		</th:block>
+		
+		
+		
+		</div>
+	</div>
+
+
+
+
+
+	<div th:replace="plantillas/dashboard :: footer"></div>
+
+	<div th:replace="plantillas/dashboard :: libreria"></div>
+
+
+
+</body>
+
+</html>

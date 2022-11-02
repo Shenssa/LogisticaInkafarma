@@ -14,7 +14,6 @@ import com.logistica.proyecto.entidad.Marca;
 import com.logistica.proyecto.entidad.Producto;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
 import com.logistica.proyecto.servicio.ProductoServicioImp;
-import com.logistica.proyecto.servicio.ProveedorServicioImp;
  
 
 @Controller

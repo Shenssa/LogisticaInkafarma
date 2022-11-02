@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="plantillas/dashboard  :: cabecera"></head>
+
+<body class="animsition">
+	<div class="page-wrapper">
+		<span th:replace="plantillas/dashboard  :: aside"></span>
+		<div class="page-container2">
+			<span th:replace="plantillas/dashboard  ::  header"></span> <span
+				th:replace="plantillas/dashboard  ::  aside_2"></span>
+
+			<!-- Inicio Seccion Cambiante-->
+			<section class="au-breadcrumb m-t-75">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="au-breadcrumb-content">
+
+									<a class="au-btn au-btn-icon au-btn--green " th:href=${RutaNuevo}> <i
+											class="zmdi zmdi-plus"></i>Nuevo
+									</a>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!--Fin Seccion Cambiante-->
+
+
+			<!-- STATISTIC-->
+			<section class="statistic">
+
+				<div class="section__content section__content--p30">
+
+					<div class="container-fluid">
+						<h1 class="text-center text-danger" th:text=${titulo}></h1>
+						 
+						<div class="row">
+
+							<table class="table">
+
+								<thead class="thead-dark  ">
+									<th>Id</th>
+									<th>Nombre</th>
+									<th>Evento</th>
+
+
+								</thead>
+								<tbody>
+									<tr th:each="item:${lista}">
+										<td th:text="${item.idRol}"></td>
+										<td th:text="${item.nombre}"></td>
+										<td>
+											<button class="btn btn-success"
+												th:onclick="'actulizar(' + ${item.idRol} + ')'">
+												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+											</button>
+
+
+
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- END STATISTIC-->
+
+
+		</div>
+	</div>
+
+
+
+
+
+	<div th:replace="plantillas/dashboard :: footer"></div>
+
+	<div th:replace="plantillas/dashboard :: libreria"></div>
+
+	<script>
+		function ee(id) {
+			let cantidad = "[[${contarPorID}]]";
+			alert(cantidad);
+		}
+
+		function actulizar(id) {
+			let url = "[[${RutaEditar}]]" + id;
+			window.location.href = url;
+		}
+
+		function preguntarEliminar(id) {
+			Swal.fire({
+				title: 'Desea eliminar?',
+				text: "No podrás revertir esto!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					Swal.fire(
+						'Elimiado!',
+						'Su archivo ha sido eliminado',
+						'success'
+					)
+					if (result.value) {
+						// Hicieron click en "Sí"
+
+						eliminar(id);
+
+
+					} else {
+						// Dijeron que no
+
+					}
+
+				}
+			})
+		}
+		function eliminar(id) {
+			let url = "[[${RutaEliminar}]]" + id;
+			$.ajax({
+				type: 'POST',
+				url: url,
+				async: true,
+				success: function () {
+					location.reload();
+				}
+
+			})
+
+		}
+
+	</script>
+
+
+</body>
+
+</html>

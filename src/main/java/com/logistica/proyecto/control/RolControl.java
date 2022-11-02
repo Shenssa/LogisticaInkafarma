@@ -8,17 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.logistica.proyecto.entidad.Rol;
+import com.logistica.proyecto.entidad.Marca;
 import com.logistica.proyecto.interfaces.InterfacesSimple;
+import com.logistica.proyecto.servicio.CategoriaServicioImp;
  
 
 @Controller
-@RequestMapping("/Rol")
-public class MarcaControl {
-	String carpeta = "Rol";
+@RequestMapping("/Marca")
+public class RolControl {
+	String carpeta = "Marca";
 	@Autowired
-	private InterfacesSimple<Rol> Service;
- 
+	private InterfacesSimple<Marca> Service;
+
+	@Autowired
+	private  CategoriaServicioImp servicioIMP;
 	
 	
 	@RequestMapping({"/"})
@@ -28,14 +31,20 @@ public class MarcaControl {
 		model.addAttribute("RutaEliminar", "/" + carpeta + "/eliminar/"); // Eliminar
 		model.addAttribute("RutaEditar", "/" + carpeta + "/editar/"); // Editar
 		model.addAttribute("lista", Service.obtenerLista());
+		model.addAttribute("cantidadItems", servicioIMP.total());
 	  
+	  
+		 
+			 
+		 
+ 
 		return "/" + carpeta + "/listado";
 	}
 
 	@GetMapping("/crear/")
 	public String crear(Model model) {
 		// instanciar entidad Nuevo
-		Rol obj = new Rol();
+		Marca obj = new Marca();
 		model.addAttribute("titulo", "Registrar " + carpeta);// titulo
 		model.addAttribute("RutaListado", "/" + carpeta + "/"); // RutaListado
 		model.addAttribute("RutaGrabar", "/" + carpeta + "/grabar"); // RutaGrabar
@@ -45,7 +54,7 @@ public class MarcaControl {
 
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable("id") Integer id, Model model) {
-		Rol obj = null;
+		Marca obj = null;
 		if (Service.existe(id) == true) {
 			obj = Service.BuscarPorIdEntidad(id);
 			model.addAttribute("titulo", "Modificar " + carpeta);
@@ -61,7 +70,7 @@ public class MarcaControl {
 	}
 
 	@RequestMapping("/grabar")
-	public String guardar(Model model, Rol obj) {
+	public String guardar(Model model, Marca obj) {
 		Service.guardar(obj);
 		return "redirect:";
 	}
