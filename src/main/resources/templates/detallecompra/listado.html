@@ -43,11 +43,11 @@
 					<div class="container-fluid">
 						<h1 class="text-center text-danger" th:text=${titulo}></h1>
 						<div class="row">
-							<form method="GET" th:action="@{agregar}" >
+							<form method="GET" th:action="@{agregar}"   >
 							<div class="form-row">
 								
 									<label for="exampleInputPassword1"> Producto </label> 
-										  <select class="form-control" value="id">
+										  <select class="form-control"  id="valor" name="valor">
 											<option th:each="item : ${listaProducto}"
 												th:value="${item.idProducto}" th:text="${item.nombre}"></option>
 									 </select>
@@ -62,8 +62,8 @@
 									 
 									 
 									</div>
+								    <button type="submit"  class="btn btn-success my-4 " >Agregar</button>
 								 
-								<input type="submit" value="Agregar a carrito" class="btn btn-success">
 							</form>
  
 						</div>
@@ -73,20 +73,44 @@
 			<!-- END STATISTIC-->
 	<h2>Listado de Productos agregados al carrito</h2>
 	 
-	<th:block th:each="item,posicion:${carrito}">
-			<div>
-			<input="number" value="1" min="1" placeholder="Cantidad de producto">
-			</div>
-			<p> <span th:text="${item}">
-			 
-			</span>
-			 
-		 
-			</p>
-			
-			 
-		</th:block>
+	<span>
+	<table class="table   ">
+  <thead class="table-dark ">
+    <tr>
+      <th scope="col">Producto</th>
+      <th scope="col">PrecioCosto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Evento</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr th:each="item,i:${carrito}">
+	 <td th:text="${item.producto.nombre}"></td>
+	  <td th:text="${item.producto.precioCosto}"></td>
+	   <td th:text="${item.cantidad}"></td>
+	    <td> 
+	     	 
+	     <a th:href="@{/DetalleCompra/eliminar}">Eliminar</a>
+	    
+	    </td>
+    </tr>
+     
+  </tbody>
+</table>
+
+</span>
+	  
+			  
 		
+		<div class="container">
+		<form method="GET" th:action="@{/DetalleCompra/grabar}"   >
+		  <button  class="btn btn-success my-4 " >Guardar </button>
+		</form>
+		
+		</div>
+			
+		 
+	 
 		
 		
 		</div>

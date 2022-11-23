@@ -8,4 +8,5 @@ public void guardar(T obj);
 public void eliminar(Integer id);
 public T BuscarPorIdEntidad(Integer id);
 public boolean existe(Integer id);
+
 }

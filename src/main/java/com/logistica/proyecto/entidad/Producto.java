@@ -32,23 +32,7 @@ public class Producto {
 	int stockMinimo;
 	String estado;
 	
-	
-	
-	public Producto() {
-		super();
-	}
-
-
-	public Producto(int idProducto) {
-		super();
-		this.idProducto = idProducto;
-	}
-
- 
-
- 
-
-
+	   
 	public int getIdProducto() {
 		return idProducto;
 	}
@@ -149,8 +133,15 @@ public class Producto {
 	}
 
 
-	 
+	public Producto() {
+		super();
+	}
 
+
+	public Producto(int idProducto) {
+		super();
+		this.idProducto = idProducto;
+	}
 
 	public Producto(int idProducto, String nombre, Double precioCosto) {
 		super();
@@ -182,6 +173,12 @@ public class Producto {
 		estado="ACTIVO";
 		precioVenta=0.0;
 		stock=0;
+	}
+
+
+	@Override
+	public String toString() {
+		return idProducto  +" "+precioCosto  ;
 	}
 
  

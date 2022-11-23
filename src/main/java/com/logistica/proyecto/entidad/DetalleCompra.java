@@ -16,7 +16,6 @@ Integer idCompra;
 @JoinColumn(name = "idProducto")	
 Producto producto;
 int cantidad ;
-
 public Integer getIdCompra() {
 	return idCompra;
 }
@@ -41,6 +40,20 @@ public DetalleCompra(Integer idCompra, Producto producto, int cantidad) {
 	this.producto = producto;
 	this.cantidad = cantidad;
 }
+public DetalleCompra() {
+	super();
+}
+public DetalleCompra(Producto producto) {
+	super();
+	this.producto = producto;
+}
+@Override
+public String toString() {
+	return "DetalleCompra [idCompra=" + idCompra + ", producto=" + producto + ", cantidad=" + cantidad + "]";
+}
+ 
+ 
+
 
 
 }
